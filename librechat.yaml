@@ -1,0 +1,56 @@
+version: 1.1.3
+
+cache: true
+
+# fileStrategy: "firebase"
+
+# interface:
+#   # Privacy policy settings
+#   privacyPolicy:
+#     externalUrl: 'https://librechat.ai/privacy-policy'
+#     openNewTab: true
+#   # Terms of service
+#   termsOfService:
+#     externalUrl: 'https://librechat.ai/tos'
+#     openNewTab: true
+    
+registration:
+  socialLogins: ["discord", "facebook", "github", "google", "openid"]
+
+tts:
+  elevenlabs:
+    apiKey: '${TTS_API_KEY}'
+    model: 'eleven_multilingual_v2'
+    voices: ['Arnj2oksWhysQOG2HGDX']
+
+# tts:
+#   localai:
+#     url: "http://host.docker.internal:8080/tts"
+#     apiKey: "EMPTY"
+#     voices: [
+#       "en-us-amy-low.onnx",
+#       "en-us-danny-low.onnx",
+#       "en-us-libritts-high.onnx",
+#       "en-us-ryan-high.onnx",
+#       ]
+#     backend: "piper"
+
+stt:
+  openai:
+    url: 'http://host.docker.internal:8080/v1/audio/transcriptions'
+    model: 'whisper'
+
+endpoints:
+  custom:
+    - name: "Platinum"
+      apiKey: "user_provided"
+      baseURL: "https://api.unify.ai/v0/"
+      models:
+        default: [
+        'gpt-4'
+          ]
+        fetch: false
+      titleConvo: false
+      titleModel: "gpt-3.5-turbo"
+      dropParams: ["stop"]
+    # iconURL: ""
